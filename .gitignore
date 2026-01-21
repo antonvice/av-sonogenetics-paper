@@ -1,0 +1,16 @@
+candidates/*
+.venv
+# Data and Virtual Environments
+data/
+.venv/
+__pycache__/
+*.pyc
+
+# Environment and Logs
+.env
+*.log
+*.jsonl
+
+# Build artifacts
+dist/
+build/

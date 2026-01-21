@@ -1,0 +1,539 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.org/sonogenetics/protocol_extractor_v1.schema.json",
+    "title": "Sonogenetics/ARG Protocol Extractor Output (v1)",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "paper",
+        "extraction",
+        "ultrasound",
+        "targeting",
+        "mediator",
+        "outcomes",
+        "controls",
+        "caveats"
+    ],
+    "properties": {
+        "paper": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "title",
+                "source",
+                "url"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "source": {
+                    "type": "string",
+                    "enum": [
+                        "pmcoa",
+                        "arxiv",
+                        "other"
+                    ]
+                },
+                "url": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "doi": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pmcid": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "arxiv_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "year": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "minimum": 1900,
+                    "maximum": 2100
+                }
+            }
+        },
+        "extraction": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "schema_version",
+                "confidence",
+                "notes"
+            ],
+            "properties": {
+                "schema_version": {
+                    "type": "string",
+                    "const": "v1"
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0
+                },
+                "notes": {
+                    "type": "string"
+                }
+            }
+        },
+        "ultrasound": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "frequency_mhz",
+                "prf_hz",
+                "duty_cycle_pct",
+                "duration_s",
+                "intensity",
+                "mechanical_index"
+            ],
+            "properties": {
+                "frequency_mhz": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0.01,
+                    "maximum": 100.0
+                },
+                "prf_hz": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "minimum": 1,
+                    "maximum": 200000
+                },
+                "pulse_width_us": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0.1,
+                    "maximum": 1000000
+                },
+                "duty_cycle_pct": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0.0,
+                    "maximum": 100.0
+                },
+                "duration_s": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0.0,
+                    "maximum": 10000000
+                },
+                "acoustic_pressure_mpa": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0.0,
+                    "maximum": 1000.0
+                },
+                "intensity": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "ispta_w_cm2",
+                        "isppta_w_cm2",
+                        "ti"
+                    ],
+                    "properties": {
+                        "ispta_w_cm2": {
+                            "type": [
+                                "number",
+                                "null"
+                            ],
+                            "minimum": 0.0,
+                            "maximum": 10000.0
+                        },
+                        "isppta_w_cm2": {
+                            "type": [
+                                "number",
+                                "null"
+                            ],
+                            "minimum": 0.0,
+                            "maximum": 100000.0
+                        },
+                        "ti": {
+                            "type": [
+                                "number",
+                                "null"
+                            ],
+                            "minimum": 0.0,
+                            "maximum": 1000.0
+                        }
+                    }
+                },
+                "mechanical_index": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0.0,
+                    "maximum": 10.0
+                },
+                "carrier_mode": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "continuous",
+                        "pulsed"
+                    ]
+                },
+                "focal_spot_mm": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0.0,
+                    "maximum": 100.0
+                },
+                "transducer": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "model",
+                        "geometry",
+                        "coupling"
+                    ],
+                    "properties": {
+                        "model": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "geometry": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "coupling": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "enum": [
+                                "gel",
+                                "water_bath",
+                                "cone",
+                                "other"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "targeting": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "species",
+                "brain_region",
+                "cell_type",
+                "delivery"
+            ],
+            "properties": {
+                "species": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "strain_or_line": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "brain_region": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "coordinates": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "atlas",
+                        "ap_mm",
+                        "ml_mm",
+                        "dv_mm"
+                    ],
+                    "properties": {
+                        "atlas": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "ap_mm": {
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "ml_mm": {
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "dv_mm": {
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "cell_type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "promoter": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "delivery": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "vector",
+                        "route",
+                        "dose"
+                    ],
+                    "properties": {
+                        "vector": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "route": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "enum": [
+                                "aav",
+                                "lentivirus",
+                                "transgenic",
+                                "lipid",
+                                "protein_injection",
+                                "other"
+                            ]
+                        },
+                        "dose": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "mediator": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "class",
+                "name",
+                "variant",
+                "expression_location"
+            ],
+            "properties": {
+                "class": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "prestin",
+                        "mscl",
+                        "gas_vesicles",
+                        "piezo",
+                        "trp",
+                        "other"
+                    ]
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "variant": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "expression_location": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "membrane",
+                        "cytosol",
+                        "secreted",
+                        "vesicle",
+                        "other"
+                    ]
+                },
+                "notes": {
+                    "type": "string"
+                }
+            }
+        },
+        "outcomes": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "outcome_types",
+                "primary_readout",
+                "summary"
+            ],
+            "properties": {
+                "outcome_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "calcium_imaging",
+                            "electrophysiology",
+                            "behavior",
+                            "gene_expression",
+                            "ultrasound_imaging",
+                            "other"
+                        ]
+                    }
+                },
+                "primary_readout": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "metrics_reported": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "summary": {
+                    "type": "string"
+                }
+            }
+        },
+        "controls": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "listed_controls",
+                "missing_controls"
+            ],
+            "properties": {
+                "listed_controls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "missing_controls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "caveats": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "confounds",
+                "safety_notes"
+            ],
+            "properties": {
+                "confounds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "safety_notes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "snippets"
+            ],
+            "properties": {
+                "snippets": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "field",
+                            "quote",
+                            "section"
+                        ],
+                        "properties": {
+                            "field": {
+                                "type": "string"
+                            },
+                            "quote": {
+                                "type": "string",
+                                "maxLength": 300
+                            },
+                            "section": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
