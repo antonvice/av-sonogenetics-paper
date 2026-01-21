@@ -575,7 +575,11 @@
 
         // --- Interaction Logic ---
         function pingGate() {
-            triggerPulse(true);
+            state.neurons.forEach((n, idx) => {
+                if (n.isSynthetic) {
+                    triggerPulse(true, idx);
+                }
+            });
             const status = document.getElementById('gate-status');
             status.innerText = "OVERRIDE ACTIVE";
             status.className = "mono text-white animate-pulse";
@@ -585,9 +589,9 @@
             }, 2000);
         }
 
-        function triggerPulse(isSynthetic = false) {
+        function triggerPulse(isSynthetic = false, startIdx = 0) {
             state.pulses.push({
-                idx: 0,
+                idx: startIdx,
                 progress: 0,
                 synthetic: isSynthetic
             });
