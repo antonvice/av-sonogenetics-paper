@@ -26,7 +26,9 @@
 
         :root {
             --emerald: #059669;
-            --indigo: #4f46e5;
+            --indigo: #DED8FF;
+            --indigo-dark: #6366f1;
+            /* Using a deeper indigo for functional text elements */
             --slate-900: #0f172a;
         }
 
@@ -99,7 +101,7 @@
         }
 
         .nav-link:hover {
-            color: var(--indigo);
+            color: var(--indigo-dark);
         }
 
         .roadmap-dot {
@@ -159,8 +161,9 @@
     <header class="fixed top-6 left-0 right-0 z-50 px-6">
         <nav
             class="max-w-5xl mx-auto h-16 bg-white/80 backdrop-blur-xl border border-white rounded-full px-6 flex items-center justify-between shadow-lg shadow-black/5">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3">
                 <img src="logo.png" alt="Grably Logo" class="h-6">
+                <span class="text-xs font-bold tracking-[0.2em] text-slate-800 uppercase">Data Labs</span>
             </div>
             <div class="hidden md:flex gap-8 items-center">
                 <a href="#abstract" class="nav-link">Abstract</a>
@@ -187,7 +190,7 @@
                 </div>
                 <h1 class="hero-title">
                     Synthetic Bio-Molecular <br>
-                    <span class="text-indigo-600 italic">Neural Interfaces</span>
+                    <span class="text-indigo-dark italic">Neural Interfaces</span>
                 </h1>
                 <p class="text-xl md:text-2xl text-slate-500 font-light leading-relaxed">
                     Logic-Gated Protein Mini-Antennas for Ultrasound-Addressable Neuromodulation and Readout.
@@ -576,12 +579,12 @@
             ctx.save();
             ctx.translate(x, y);
 
-            const color = isActive ? (isSynthetic ? "#4f46e5" : "#1e293b") : "#f1f5f9";
-            const glow = isActive ? (isSynthetic ? "#818cf8" : "#94a3b8") : "#f8fafc";
+            const color = isActive ? (isSynthetic ? "#6366f1" : "#1e293b") : "#cbd5e1";
+            const glow = isActive ? (isSynthetic ? "#DED8FF" : "#94a3b8") : "#e2e8f0";
 
             // Dendrites
             ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 1.3;
             for (let i = 0; i < 8; i++) {
                 const angle = (i * Math.PI * 2) / 8 + Math.sin(Date.now() * 0.001 + i) * 0.15;
                 ctx.beginPath();
@@ -601,7 +604,7 @@
 
             ctx.fillStyle = somaGrad;
             ctx.shadowBlur = isActive ? 30 : 0;
-            ctx.shadowColor = isSynthetic ? "rgba(79, 70, 229, 0.4)" : "rgba(30, 41, 59, 0.2)";
+            ctx.shadowColor = isSynthetic ? "rgba(99, 102, 241, 0.4)" : "rgba(30, 41, 59, 0.2)";
             ctx.beginPath(); ctx.arc(0, 0, 13, 0, Math.PI * 2); ctx.fill();
 
             // Nucleus
@@ -610,10 +613,10 @@
 
             // Synthetic Gate Accessory
             if (isSynthetic) {
-                ctx.strokeStyle = isActive ? "#fff" : "#4f46e5";
-                ctx.lineWidth = 2.5;
+                ctx.strokeStyle = isActive ? "#fff" : "#6366f1";
+                ctx.lineWidth = 3;
                 ctx.beginPath(); ctx.moveTo(0, -13); ctx.lineTo(0, -32); ctx.stroke();
-                ctx.fillStyle = isActive ? "#fff" : "#4f46e5";
+                ctx.fillStyle = isActive ? "#fff" : "#6366f1";
                 ctx.beginPath(); ctx.arc(0, -32, 5, 0, Math.PI * 2); ctx.fill();
             }
 
