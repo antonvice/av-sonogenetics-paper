@@ -18,20 +18,24 @@ Sonogenetics is an emerging field that uses ultrasound to non-invasively control
 ## 🚀 Getting Started
 
 1. **Setup Environment**:
+
    ```bash
    cp .env.example .env
    # Add your GEMINI_API_KEY
    ```
 
 2. **Filter Candidates**:
+
    ```bash
    uv run scripts/filter_candidates.py
    ```
 
 3. **Run Labeling**:
+
    ```bash
    uv run scripts/teacher_label.py
    ```
 
 ## 📊 Dataset Goals
+
 The goal is to collect **500-1000 high-quality training examples** to fine-tune a specialized local model (using MLX) for automated protocol extraction in the sonogenetics domain.
