@@ -25,15 +25,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
         :root {
-            --emerald: #10b981;
-            --indigo: #6366f1;
-            --zinc-950: #09090b;
+            --emerald: #059669;
+            --indigo: #4f46e5;
+            --slate-900: #0f172a;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--zinc-950);
-            color: #fafafa;
+            background-color: #f8fafc;
+            color: #1e293b;
             margin: 0;
             overflow-x: hidden;
         }
@@ -43,55 +43,63 @@
         }
 
         .glass-panel {
-            background: rgba(15, 15, 20, 0.7);
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 1);
             border-radius: 1.5rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6366f1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            padding-right: 0.15em;
-            /* Fix for italic clipping of 'L' */
+        .gradient-bg {
+            background: radial-gradient(circle at top right, #eef2ff 0%, #f5f3ff 50%, #ffffff 100%);
         }
 
         .hero-title {
-            font-size: clamp(2.2rem, 6vw, 4.8rem);
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
             line-height: 1.1;
             letter-spacing: -0.04em;
             font-weight: 800;
-            padding-bottom: 0.2em;
+            color: var(--slate-900);
         }
 
         .btn-ping {
-            background: var(--emerald);
-            color: black;
-            font-weight: 800;
-            padding: 1.25rem 3rem;
-            border-radius: 1.25rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--slate-900);
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
             cursor: pointer;
             border: none;
         }
 
         .btn-ping:hover {
-            transform: scale(1.05) translateY(-4px);
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .math-block {
-            background: #000;
+            background: #fff;
             padding: 1.5rem;
             border-radius: 1rem;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             margin: 1.5rem 0;
             overflow-x: auto;
             font-size: 0.95rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--indigo);
         }
 
         .roadmap-dot {
@@ -101,35 +109,9 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background: var(--emerald);
-            border: 3px solid var(--zinc-950);
-            box-shadow: 0 0 10px var(--emerald);
-        }
-
-        .nav-link {
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            color: #71717a;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .nav-link:hover {
-            color: var(--emerald);
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--zinc-950);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #27272a;
-            border-radius: 10px;
+            background: var(--indigo);
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(79, 70, 229, 0.2);
         }
 
         .chart-container {
@@ -147,91 +129,79 @@
         th {
             text-align: left;
             padding: 1rem;
-            color: var(--emerald);
-            border-bottom: 2px solid #27272a;
+            color: var(--indigo);
+            border-bottom: 2px solid #f1f5f9;
         }
 
         td {
             padding: 1rem;
-            border-bottom: 1px solid #18181b;
-            color: #a1a1aa;
+            border-bottom: 1px solid #f8fafc;
+            color: #475569;
         }
 
         tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
-            color: #fff;
+            background: rgba(0, 0, 0, 0.01);
+            color: #1e293b;
+        }
+
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
         }
     </style>
-
-    <!-- Chosen Palette: Emerald & Zinc. High-tech, dark, medical dashboard aesthetic. -->
-
-    <!-- Application Structure Plan:
-         1. Hero Section: Formal Title & Abstract based on Anton Vice et al. 2026.
-         2. Problem Space: Bio-mechanical limits and Equation 1.
-         3. Substrate Comparison: Optimization logic, formulas 2-4, and Table 1.
-         4. Energy Trade-space: Ultrasound vs Optical with formulas 5-6.
-         5. The Simulation: High-fidelity anatomical neural chain.
-         6. Logic Gating: Equation 7 and truth table context.
-         7. ARGs & AI Pipeline: Formula 8 and workflow.
-         8. Bibliography: Expandable academic references.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
 
-<body class="antialiased selection:bg-emerald-500 selection:text-black">
+<body class="antialiased selection:bg-indigo-100 selection:text-indigo-900 gradient-bg grid-bg">
 
     <!-- Header Navigation -->
-    <nav class="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div
-                    class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                    <span class="text-white font-extrabold italic text-xl">G</span>
-                </div>
-                <div>
-                    <h2 class="text-white font-bold leading-none tracking-tight">GRABLY <span
-                            class="text-emerald-500">DATA LABS</span></h2>
-                    <p class="text-[9px] mono text-zinc-500 uppercase tracking-widest mt-1">Anton Vice</p>
-                </div>
+    <header class="fixed top-6 left-0 right-0 z-50 px-6">
+        <nav
+            class="max-w-5xl mx-auto h-16 bg-white/80 backdrop-blur-xl border border-white rounded-full px-6 flex items-center justify-between shadow-lg shadow-black/5">
+            <div class="flex items-center gap-2">
+                <img src="logo.png" alt="Grably Logo" class="h-6">
             </div>
-            <div class="hidden lg:flex gap-10">
+            <div class="hidden md:flex gap-8 items-center">
                 <a href="#abstract" class="nav-link">Abstract</a>
-                <a href="#logic" class="nav-link">Theory</a>
+                <a href="#theory" class="nav-link">Theory</a>
                 <a href="#simulation" class="nav-link">Simulator</a>
                 <a href="#roadmap" class="nav-link">Roadmap</a>
+                <button
+                    class="bg-zinc-900 text-white text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-widest hover:bg-black transition-colors">Research
+                    PDF</button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <main class="max-w-7xl mx-auto px-6 pb-20">
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
 
         <!-- Hero Section -->
-        <section id="abstract" class="py-24 lg:py-32 space-y-10">
-            <div class="max-w-5xl space-y-8">
+        <section id="abstract" class="py-20 space-y-12 text-center">
+            <div class="space-y-6 max-w-4xl mx-auto">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Pre-Print //
+                    class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                    <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest uppercase">Pre-Print //
                         GDL-2026-ARX</span>
                 </div>
                 <h1 class="hero-title">
                     Synthetic Bio-Molecular <br>
-                    <span class="gradient-text italic">Neural Interfaces</span>
+                    <span class="text-indigo-600 italic">Neural Interfaces</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed max-w-4xl">
-                    Logic-Gated Protein Mini-Antennas for Ultrasound-Addressable Neuromodulation and Readout. A
-                    framework for biologically integrated, genetically encodable sensing and actuation modules.
+                <p class="text-xl md:text-2xl text-slate-500 font-light leading-relaxed">
+                    Logic-Gated Protein Mini-Antennas for Ultrasound-Addressable Neuromodulation and Readout.
                 </p>
-                <div class="flex items-center gap-6 text-sm mono text-zinc-500">
-                    <div>Author: <span class="text-white">Anton Vice et al.</span></div>
-                    <div>Date: <span class="text-white">January 18, 2026</span></div>
+                <div class="flex items-center justify-center gap-6 text-xs mono text-slate-400">
+                    <div>Author: <span class="text-slate-900 font-bold">Anton Vice et al.</span></div>
+                    <div>Date: <span class="text-slate-900 font-bold">January 18, 2026</span></div>
                 </div>
             </div>
 
-            <!-- Abstract Paragraph -->
-            <div class="glass-panel p-10 mt-12 border-white/5 shadow-2xl">
-                <h3 class="text-emerald-500 font-bold uppercase tracking-widest text-xs mb-4">Abstract Overview</h3>
-                <p class="text-zinc-400 leading-relaxed text-lg">
+            <!-- Abstract -->
+            <div class="glass-panel p-10 text-left border-white shadow-xl max-w-5xl mx-auto">
+                <h3 class="text-indigo-600 font-bold uppercase tracking-widest text-[10px] mb-4">Abstract Overview</h3>
+                <p class="text-slate-600 leading-relaxed text-lg">
                     Implantable neural interfaces face chronic limits arising from mechanical mismatch and foreign-body
                     response. We propose a framework for genetically encodable “mini-antenna” modules that sense
                     molecular context using engineered switches, actuate neural activity via ultrasound-responsive
@@ -241,171 +211,155 @@
             </div>
         </section>
 
-        <!-- Mechanical Limits & Substrate Optimization -->
-        <section class="py-20 grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Theory Section -->
+        <section id="theory" class="py-20 grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div class="space-y-8">
-                <h3 class="text-3xl font-extrabold text-white">Bio-mechanical <span
-                        class="text-emerald-500 italic">Limits</span></h3>
-                <p class="text-zinc-400 leading-relaxed">
+                <h3 class="text-3xl font-extrabold text-slate-900">Bio-mechanical <span
+                        class="text-indigo-600 italic">Limits</span></h3>
+                <p class="text-slate-600 leading-relaxed">
                     Chronic implants trigger glial responses that increase access impedance. A Randles-type circuit with
                     a constant phase element (CPE) describes this interfacial behavior:
                 </p>
                 <div class="math-block">
                     $$ Z(\omega)=R_s+\left(\frac{1}{\frac{1}{R_{ct}}+Q(j\omega)^{\alpha}}\right) \tag{1} $$
                 </div>
-                <p class="text-zinc-500 text-sm">
+                <p class="text-slate-500 text-sm">
                     Access impedance $Z$ shifts as encapsulation chemistry evolves, motivating biological
                     components—engineered proteins—rather than rigid inorganic interfaces.
                 </p>
             </div>
 
             <div class="space-y-8">
-                <h3 class="text-3xl font-extrabold text-white">Substrate <span
-                        class="text-emerald-500 italic">Optimization</span></h3>
-                <p class="text-zinc-400 leading-relaxed">
-                    Small-molecule voltage indicators achieve fast responses but lack genetic specificity. Fluorescent
-                    shifts are driven by electrochromic (Stark) response:
-                </p>
-                <div class="math-block">
-                    $$ \Delta \nu \propto -\Delta\mu\cdot E - \frac{1}{2}\Delta\alpha E^2 \tag{2} $$
-                </div>
-                <p class="text-zinc-400 leading-relaxed">
-                    In contrast, de novo protein switches like LOCKR enable Boolean logic through two-state
-                    conformational gating:
+                <h3 class="text-3xl font-extrabold text-slate-900">Substrate <span
+                        class="text-indigo-600 italic">Optimization</span></h3>
+                <p class="text-slate-600 leading-relaxed">
+                    De novo protein switches like LOCKR enable Boolean logic through two-state conformational gating. A
+                    generic two-state switch description is:
                 </p>
                 <div class="math-block">
                     $$ K_{\mathrm{open}}=\frac{[S_{\mathrm{open}}]}{[S_{\mathrm{closed}}]}=e^{-\Delta
                     G_{\mathrm{open}}/RT} \tag{4} $$
                 </div>
+                <p class="text-slate-600 leading-relaxed">
+                    In addition, DNA strand-displacement enables predictable circuit design. Reaction rates follow:
+                </p>
+                <div class="math-block">
+                    $$ k_{\mathrm{obs}} \approx k_0 e^{-\Delta G^{\ddagger}/RT} \tag{3} $$
+                </div>
             </div>
         </section>
 
-        <!-- Table 1 Implementation -->
+        <!-- Table -->
         <section class="py-20">
-            <div class="glass-panel p-8 border-white/5 overflow-x-auto">
-                <h4 class="text-emerald-500 font-bold uppercase tracking-widest text-xs mb-6">Table 1. Candidate
+            <div class="glass-panel p-8 overflow-x-auto shadow-sm">
+                <h4 class="text-indigo-600 font-bold uppercase tracking-widest text-[10px] mb-6">Table 1. Candidate
                     Molecular Substrates</h4>
                 <table>
                     <thead>
                         <tr>
                             <th>Substrate Type</th>
                             <th>Logic Complexity</th>
-                            <th>Targeting Precision</th>
-                            <th>Typical Readout</th>
+                            <th>Precision</th>
+                            <th>Readout</th>
                             <th>CNS Compatibility</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="font-bold text-white">Engineered Proteins</td>
+                            <td class="font-bold text-slate-900">Engineered Proteins</td>
                             <td>High (Modular)</td>
                             <td>High (Genetic)</td>
                             <td>Optical / Acoustic</td>
                             <td>High (Biodegradable)</td>
                         </tr>
                         <tr>
-                            <td class="font-bold text-white">Synthetic Chemicals</td>
+                            <td class="font-bold text-slate-900">Synthetic Chemicals</td>
                             <td>Moderate</td>
                             <td>Low–Moderate</td>
                             <td>Optical</td>
-                            <td>Variable (Toxicity)</td>
+                            <td>Variable</td>
                         </tr>
                         <tr>
-                            <td class="font-bold text-white">DNA Circuits</td>
+                            <td class="font-bold text-slate-900">DNA Circuits</td>
                             <td>Very High</td>
                             <td>Moderate–High</td>
                             <td>FRET</td>
-                            <td>Moderate (Degradation)</td>
+                            <td>Moderate</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Neural Chain Simulation Engine -->
+        <!-- Simulation Section -->
         <section id="simulation" class="py-20 space-y-8">
             <div class="flex flex-col md:flex-row justify-between items-end gap-6">
                 <div>
-                    <h2 class="text-4xl font-extrabold text-white">Synaptic <span
-                            class="text-emerald-500 italic">Chain</span> Engine</h2>
-                    <p class="text-zinc-500 mt-2">Observing bio-anatomical neuron chains with clustered neurotransmitter
-                        logic overrides.</p>
+                    <h2 class="text-4xl font-extrabold text-slate-900">Synaptic <span
+                            class="text-indigo-600 italic">Chain</span> Engine</h2>
+                    <p class="text-slate-500 mt-2">Bio-anatomical simulator with clustered logic overrides.</p>
                 </div>
-                <button onclick="pingGate()" class="btn-ping">Ping EITHER Gate</button>
+                <button onclick="pingGate()" class="btn-ping shadow-lg shadow-indigo-200">Ping Gates</button>
             </div>
 
-            <div class="glass-panel overflow-hidden h-[650px] relative bg-black border border-white/5 shadow-inner">
+            <div class="glass-panel overflow-hidden h-[600px] relative bg-white border-white shadow-2xl">
                 <canvas id="neuronCanvas" class="w-full h-full"></canvas>
 
                 <!-- HUD Telemetry -->
                 <div class="absolute top-8 left-8 space-y-4 pointer-events-none">
-                    <div class="glass-panel p-6 space-y-3 w-64 bg-black/80 border-emerald-500/20 shadow-2xl">
-                        <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
-                            <span class="text-[9px] font-black uppercase text-zinc-500 tracking-widest">Engine
+                    <div class="glass-panel p-6 space-y-3 w-64 bg-white/90 border-indigo-100 shadow-xl">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2 mb-2">
+                            <span class="text-[9px] font-black uppercase text-slate-400 tracking-widest">Engine
                                 Status</span>
-                            <span id="sys-status" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span id="sys-status" class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
                         </div>
                         <div class="flex justify-between text-xs font-medium">
-                            <span class="text-zinc-500 font-bold uppercase">Natural Wave:</span>
-                            <span id="auto-timer" class="mono text-white">5.0s</span>
+                            <span class="text-slate-500 font-bold uppercase">Natural Wave:</span>
+                            <span id="auto-timer" class="mono text-slate-900">5.0s</span>
                         </div>
                         <div class="flex justify-between text-xs font-medium">
-                            <span class="text-zinc-500 font-bold uppercase">Interface Logic:</span>
-                            <span id="gate-status" class="mono text-emerald-500">STANDBY</span>
-                        </div>
-                        <div class="flex justify-between text-xs font-medium">
-                            <span class="text-zinc-500 font-bold uppercase">Cleft Saturation:</span>
-                            <span class="mono text-indigo-400">88.4%</span>
+                            <span class="text-slate-500 font-bold uppercase">Logic Override:</span>
+                            <span id="gate-status" class="mono text-indigo-600 font-bold">STANDBY</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Simulation Footer Info -->
                 <div
-                    class="absolute bottom-8 right-8 bg-black/60 p-4 rounded-xl text-[9px] mono text-zinc-500 uppercase tracking-widest border border-white/5">
-                    Synthetic Overrides: <span class="text-emerald-500 font-bold">EMERALD</span> // Autonomous Pulse:
-                    <span class="text-white font-bold">WHITE</span>
+                    class="absolute bottom-8 right-8 bg-white/80 p-4 rounded-xl text-[9px] mono text-slate-400 uppercase tracking-widest border border-white">
+                    Synthetic Gate: <span class="text-indigo-600 font-extrabold">INDIGO</span> // Natural: <span
+                        class="text-slate-900 font-bold">SLATE</span>
                 </div>
             </div>
         </section>
 
-        <!-- Acoustic Trade-space & Logic Architecture -->
-        <section id="logic" class="py-20 grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div class="space-y-12">
-                <div class="space-y-4">
-                    <h3 class="text-3xl font-extrabold text-white">Acoustic <span
-                            class="text-indigo-400 italic">Trade-space</span></h3>
-                    <p class="text-zinc-400 leading-relaxed">
-                        Ultrasound provides a practical compromise between penetration and focality. Simple amplitude
-                        attenuation follows:
-                    </p>
-                    <div class="math-block">
-                        $$ P(z)=P_0 e^{-\alpha(f)z} \tag{6} $$
-                    </div>
+        <!-- Modalities and Logic -->
+        <section class="py-20 grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div class="space-y-10">
+                <h3 class="text-3xl font-extrabold text-slate-900">Acoustic <span
+                        class="text-indigo-600 italic">Trade-space</span></h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Ultrasound provides deep penetration compared to optical methods. Attenuation follows:
+                </p>
+                <div class="math-block">
+                    $$ P(z)=P_0 e^{-\alpha(f)z} \tag{6} $$
                 </div>
-
-                <div class="glass-panel p-8 bg-black/40 border-white/5">
-                    <h4 class="text-xs font-bold text-zinc-500 uppercase mb-8 text-center tracking-widest">Comparative
-                        Modality Efficacy</h4>
-                    <div class="chart-container">
-                        <canvas id="modalityChart"></canvas>
-                    </div>
+                <div class="chart-container glass-panel p-8 bg-white">
+                    <canvas id="modalityChart"></canvas>
                 </div>
             </div>
 
             <div class="space-y-10">
-                <h3 class="text-3xl font-extrabold text-white">Logic-Gated <span
-                        class="text-emerald-500 italic">Architecture</span></h3>
-                <p class="text-zinc-400 leading-relaxed">
-                    A minimal AND-gate concept: Ligand binding shifts a protein switch into a permissive state; Focused
-                    Ultrasound (FUS) provides the second mechanical input.
+                <h3 class="text-3xl font-extrabold text-slate-900">Logic-Gated <span
+                        class="text-indigo-600 italic">Architecture</span></h3>
+                <p class="text-slate-600 leading-relaxed">
+                    The AND-gate formalization: ligant binding gates the biophysical drive of focused ultrasound (FUS).
                 </p>
                 <div class="math-block">
-                    $$ P_{\mathrm{act}}([NT],P_{US}) = \underbrace{\frac{[NT]^n}{K_d^n+[NT]^n}}_{\text{biochemical}}
-                    \cdot \underbrace{G(P_{US})}_{\text{ultrasound}} \tag{7} $$
+                    $$ P_{\mathrm{act}}([NT],P_{US}) = \underbrace{\frac{[NT]^n}{K_d^n+[NT]^n}}_{\text{NT gated}} \cdot
+                    \underbrace{G(P_{US})}_{\text{ultrasound}} \tag{7} $$
                 </div>
-                <p class="text-zinc-500 text-sm italic">
-                    Reporting neural state via Rayleigh scattering in Rayleigh GVs:
+                <p class="text-slate-500 text-sm">
+                    Reporting via acoustic reporter genes (ARGs) using air-filled protein nanostructures:
                 </p>
                 <div class="math-block">
                     $$ \sigma \propto k^4 a^6 \left|\Delta \chi\right|^2 \tag{8} $$
@@ -413,76 +367,185 @@
             </div>
         </section>
 
-        <!-- Roadmap & Experimental Milestones -->
-        <section id="roadmap" class="py-20 space-y-12">
-            <h3 class="text-4xl font-extrabold text-white italic">Research Roadmap</h3>
-            <div class="relative ml-10 space-y-16 pl-10 border-l-2 border-zinc-900">
-                <div class="relative">
-                    <div class="roadmap-dot"></div>
-                    <h4 class="font-bold text-xl text-white">Milestone A: In Vitro Validation</h4>
-                    <p class="text-sm text-zinc-500 mt-2">Demonstrate biochemical gating of ultrasound responsiveness in
-                        cultured neurons with stringent thermal and cavitation controls.</p>
+        <!-- AI Pipeline Section -->
+        <section class="py-20 space-y-12">
+            <h3 class="text-4xl font-extrabold text-slate-900 italic">AI-Assisted Design Pipeline</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-panel p-8 space-y-4 hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 font-bold">
+                        01</div>
+                    <h4 class="font-bold text-slate-900">Target Modeling</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Predict receptor/ligand pockets using AlphaFold 3
+                        for precise biomolecular interactions.</p>
                 </div>
-                <div class="relative">
-                    <div class="roadmap-dot" style="background: var(--indigo); box-shadow: 0 0 10px var(--indigo);">
-                    </div>
-                    <h4 class="font-bold text-xl text-white">Milestone B: Small Animal Efficacy</h4>
-                    <p class="text-sm text-zinc-500 mt-2">Cell-type-specific modulation with behavioral readouts;
-                        quantifying exposure margins and safety endpoints.</p>
+                <div class="glass-panel p-8 space-y-4 hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 font-bold">
+                        02</div>
+                    <h4 class="font-bold text-slate-900">Generative Design</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Use diffusion models like RFdiffusion to propose
+                        scaffolds conditioned on focal constraints.</p>
                 </div>
-                <div class="relative">
-                    <div class="roadmap-dot" style="background: #52525b; box-shadow: none;"></div>
-                    <h4 class="font-bold text-xl text-zinc-400 italic">Milestone C: Readout Integration</h4>
-                    <p class="text-sm text-zinc-600 mt-2 italic">Co-express ARGs (Acoustic Reporter Genes) with
-                        actuation modules to establish non-invasive sensitivity limits.</p>
+                <div class="glass-panel p-8 space-y-4 hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 font-bold">
+                        03</div>
+                    <h4 class="font-bold text-slate-900">Sequence Opt</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Produce sequences compatible with designed folds
+                        using ProteinMPNN architectures.</p>
+                </div>
+                <div class="glass-panel p-8 space-y-4 hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 font-bold">
+                        04</div>
+                    <h4 class="font-bold text-slate-900">Affinity Maturation</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Apply AlphaProteo pipelines for binder maturation
+                        and stability in vivo.</p>
                 </div>
             </div>
         </section>
 
-        <!-- References Section -->
-        <section class="py-20 border-t border-white/5">
-            <details class="group glass-panel border-white/5 overflow-hidden">
-                <summary
-                    class="p-8 cursor-pointer flex justify-between items-center hover:bg-white/5 transition-colors">
-                    <h3 class="text-2xl font-bold text-white italic">Bibliography <span
-                            class="text-zinc-600">GDL-R-09</span></h3>
-                    <div
-                        class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-open:rotate-180 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24">
-                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg>
-                    </div>
-                </summary>
-                <div class="p-10 pt-0 space-y-4 mono text-[10px] text-zinc-500 uppercase tracking-widest leading-loose">
-                    <p>[1] Salatino JW et al. *Glial responses to implanted electrodes in the brain.* Nat Biomed Eng.
-                        2017.</p>
-                    <p>[2] Campbell A et al. *Chronically implanted intracranial electrodes: tissue response over time.*
-                        Micromachines. 2018.</p>
-                    <p>[3] Chen Z et al. *De novo design of protein logic gates.* Science. 2020.</p>
-                    <p>[4] Naor O et al. *The biophysical mechanisms of ultrasound neuromodulation.* Nat Rev Neurosci.
-                        2016.</p>
-                    <p>[5] Farhadi A et al. *Ultrasound imaging of gene expression in mammalian cells.* Science. 2019.
-                    </p>
-                    <p>[6] Bourdeau RW et al. *Acoustic reporter genes for noninvasive imaging.* Nature. 2018.</p>
-                    <p>[7] Abramson J et al. *Structure prediction of biomolecular interactions with AlphaFold 3.*
-                        Nature. 2024.</p>
+        <!-- Roadmap -->
+        <section id="roadmap" class="py-20 space-y-12">
+            <h3 class="text-4xl font-extrabold text-slate-900 italic">Research Roadmap</h3>
+            <div class="relative ml-10 space-y-16 pl-10 border-l-2 border-slate-100">
+                <div class="relative">
+                    <div class="roadmap-dot"></div>
+                    <h4 class="font-bold text-xl text-slate-900">Milestone A: In Vitro Validation</h4>
+                    <p class="text-sm text-slate-500 mt-2">Demonstrate biochemical gating of ultrasound responsiveness
+                        in cultured neurons.</p>
                 </div>
-            </details>
+                <div class="relative">
+                    <div class="roadmap-dot" style="background: var(--slate-900);"></div>
+                    <h4 class="font-bold text-xl text-slate-900">Milestone B: Small Animal Efficacy</h4>
+                    <p class="text-sm text-slate-500 mt-2">Cell-type-specific modulation with behavioral readouts and
+                        safety endpoints.</p>
+                </div>
+                <div class="relative">
+                    <div class="roadmap-dot" style="background: #e2e8f0; box-shadow: none;"></div>
+                    <h4 class="font-bold text-xl text-slate-300 italic">Milestone C: Readout Integration</h4>
+                    <p class="text-sm text-slate-400 mt-2 italic">Co-express ARGs with actuation modules for
+                        non-invasive sensitivity metrics.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety & Ethics Section -->
+        <section class="py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-slate-100">
+            <div class="space-y-8">
+                <h3 class="text-3xl font-extrabold text-slate-900 italic">Safety & Exposure</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Ultrasound neuromodulation requires strict control of waveform, intensity, and duty cycle. Claims of
+                    "non-invasive" systems must separate energy delivery from biological payload delivery.
+                </p>
+                <ul class="space-y-3 text-xs text-slate-500 mono uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                        Thermal rise monitoring</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                        Cavitation risk modeling</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                        Skull-aware beamforming</li>
+                </ul>
+            </div>
+            <div class="glass-panel p-10 bg-indigo-50/30 border-indigo-100">
+                <h3 class="text-xl font-bold text-slate-900 mb-4">Ethical Trajectory</h3>
+                <p class="text-sm text-slate-600 leading-relaxed italic">
+                    "Genetic neuromodulation and remote stimulation raise substantial ethical issues regarding consent,
+                    privacy, and autonomy. Clinical translation requires robust governance and transparency."
+                </p>
+            </div>
+        </section>
+
+        <!-- Bibliography -->
+        <section class="py-20 border-t border-slate-100">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-10 italic">Bibliography</h3>
+            <div class="grid grid-cols-1 gap-6 max-w-5xl">
+                <div class="mono text-[10px] text-slate-400 uppercase tracking-widest space-y-4 leading-loose">
+                    <p><span class="text-indigo-600 font-bold">[1]</span> Salatino JW, Ludwig KA, Kozai TDY, Purcell EK.
+                        *Glial responses to implanted electrodes in the brain.* Nat Biomed Eng. 2017.
+                        doi:10.1038/s41551-017-0154-1.</p>
+                    <p><span class="text-indigo-600 font-bold">[2]</span> Campbell A, Wu C. *Chronically implanted
+                        intracranial electrodes: tissue response and electrical changes over time.* Micromachines.
+                        2018;9(9):430. doi:10.3390/mi9090430.</p>
+                    <p><span class="text-indigo-600 font-bold">[3]</span> Keogh C, et al. *Optimizing the
+                        neuron–electrode interface for chronic recording and stimulation.* Neurosurg Focus.
+                        2020;49(1):E7. doi:10.3171/2020.4.FOCUS20203.</p>
+                    <p><span class="text-indigo-600 font-bold">[4]</span> Evers JE, et al. *Stimulation-induced changes
+                        at the electrode–tissue interface and implications for DBS.* (Modeling + chronic interface
+                        characterization). 2022. PMID:35728575.</p>
+                    <p><span class="text-indigo-600 font-bold">[5]</span> Langan RA, et al. *De novo design of bioactive
+                        protein switches (LOCKR).* Nature. 2019. (LOCKR concept; conformational gating).</p>
+                    <p><span class="text-indigo-600 font-bold">[6]</span> Chen Z, et al. *De novo design of protein
+                        logic gates.* Science. 2020;368:78–84. doi:10.1126/science.aay2790.</p>
+                    <p><span class="text-indigo-600 font-bold">[7]</span> Lajoie MJ, et al. *Designed protein logic to
+                        target cells with precise combinations of surface antigens (Co-LOCKR).* Science. 2020.
+                        doi:10.1126/science.aba6527.</p>
+                    <p><span class="text-indigo-600 font-bold">[8]</span> Liu T, et al. *Sonogenetics: recent advances
+                        and future directions.* Brain Stimulation. 2022.</p>
+                    <p><span class="text-indigo-600 font-bold">[9]</span> Qiu Z, et al. *Targeted neurostimulation in
+                        mouse brains with non-invasive ultrasound via mechanosensitive channels (MscL-based).* Cell
+                        Reports. 2020.</p>
+                    <p><span class="text-indigo-600 font-bold">[10]</span> Naor O, et al. *The biophysical mechanisms of
+                        ultrasound neuromodulation.* Nat Rev Neurosci. 2016. doi:10.1038/nrn.2016.40.</p>
+                    <p><span class="text-indigo-600 font-bold">[11]</span> Tang J, et al. *Recent advancement of
+                        sonogenetics.* 2023. PMCID: PMC11214298.</p>
+                    <p><span class="text-indigo-600 font-bold">[12]</span> Hahmann J, et al. *Sonogenetics for
+                        monitoring and modulating biomolecular processes (review).* Angew Chem Int Ed. 2024.</p>
+                    <p><span class="text-indigo-600 font-bold">[13]</span> Knöpfel T, et al. *Genetically encoded
+                        fluorescent voltage indicators: principles and applications (review).* (Representative GEVI
+                        reviews).</p>
+                    <p><span class="text-indigo-600 font-bold">[14]</span> Abdelfattah AS, et al. *Voltage imaging:
+                        advances and constraints (review).* (Representative voltage imaging reviews).</p>
+                    <p><span class="text-indigo-600 font-bold">[15]</span> Seelig G, et al. *DNA strand displacement
+                        circuits and kinetics (foundational work).* (Representative strand displacement references).
+                    </p>
+                    <p><span class="text-indigo-600 font-bold">[16]</span> Reviews on nucleic-acid computation in
+                        biological environments (limitations, degradation, delivery).</p>
+                    <p><span class="text-indigo-600 font-bold">[17]</span> Jacques SL. *Optical properties of biological
+                        tissues: a review.* Phys Med Biol. 2013. doi:10.1088/0031-9155/58/11/R37.</p>
+                    <p><span class="text-indigo-600 font-bold">[18]</span> Huang Y-S, et al. *Sonogenetic modulation
+                        using an engineered auditory-sensing protein (prestin).* Nano Lett. 2020;20(2):1089–1100.
+                        doi:10.1021/acs.nanolett.9b04373.</p>
+                    <p><span class="text-indigo-600 font-bold">[19]</span> Bourdeau RW, et al. *Acoustic reporter genes
+                        for noninvasive imaging of microbes in mammalian hosts.* Nature. 2018. (ARG foundations).</p>
+                    <p><span class="text-indigo-600 font-bold">[20]</span> Farhadi A, et al. *Ultrasound imaging of gene
+                        expression in mammalian cells.* Science. 2019. doi:10.1126/science.aax4804.</p>
+                    <p><span class="text-indigo-600 font-bold">[21]</span> Hurt RC, et al. *Directed evolution of
+                        acoustic reporter genes using high-throughput acoustic screening.* ACS Synth Biol.
+                        2024;13(7):2215–2226. doi:10.1021/acssynbio.4c00283.</p>
+                    <p><span class="text-indigo-600 font-bold">[22]</span> Hurt RC, et al. *Genomically mined acoustic
+                        reporter genes for real-time in vivo monitoring.* Nat Biotechnol. 2023.
+                        doi:10.1038/s41587-022-01581-y.</p>
+                    <p><span class="text-indigo-600 font-bold">[23]</span> Nyström NN, et al. *Multiplexed ultrasound
+                        imaging of gene expression.* Nat Methods. 2025. doi:10.1038/s41592-025-02825-w.</p>
+                    <p><span class="text-indigo-600 font-bold">[24]</span> Abramson J, et al. *Accurate structure
+                        prediction of biomolecular interactions with AlphaFold 3.* Nature. 2024.
+                        doi:10.1038/s41586-024-07487-w.</p>
+                    <p><span class="text-indigo-600 font-bold">[25]</span> Watson JL, et al. *De novo design of protein
+                        structure and function with RFdiffusion.* Nature. 2023;620:1089–1100.
+                        doi:10.1038/s41586-023-06415-8.</p>
+                    <p><span class="text-indigo-600 font-bold">[26]</span> Dauparas J, et al. *Robust deep
+                        learning–based protein sequence design using ProteinMPNN.* Science. 2022.
+                        doi:10.1126/science.add2187.</p>
+                    <p><span class="text-indigo-600 font-bold">[27]</span> Zambaldi V, et al. *De novo design of
+                        high-affinity protein binders with AlphaProteo.* arXiv:2409.08022 (2024).</p>
+                </div>
+            </div>
         </section>
 
     </main>
 
-    <footer class="border-t border-white/5 py-16 bg-black">
+    <footer class="py-16 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="flex items-center gap-4 text-zinc-600 mono text-[9px] uppercase tracking-widest">
+            <div class="flex items-center gap-4 text-slate-400 mono text-[9px] uppercase tracking-widest">
                 <span>© 2026 GRABLY DATA LABS</span>
-                <span class="w-1 h-1 rounded-full bg-zinc-800"></span>
+                <span class="w-1 h-1 rounded-full bg-slate-200"></span>
                 <span>Anton Vice</span>
             </div>
-            <div class="flex gap-10 text-[10px] font-bold text-zinc-700 uppercase tracking-widest">
-                <a href="#" class="hover:text-emerald-500 transition-colors">Research PDF</a>
-                <a href="#" class="hover:text-emerald-500 transition-colors">Lab Contact</a>
+            <div class="flex gap-10 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                <a href="#" class="hover:text-indigo-600 transition-colors">Lab Contact</a>
+                <a href="#" class="hover:text-indigo-600 transition-colors">Data Suites</a>
             </div>
         </div>
     </footer>
@@ -513,12 +576,12 @@
             ctx.save();
             ctx.translate(x, y);
 
-            const color = isActive ? (isSynthetic ? "#10b981" : "#fff") : "#1c1c1f";
-            const glow = isActive ? (isSynthetic ? "#34d399" : "#a1a1aa") : "#09090b";
+            const color = isActive ? (isSynthetic ? "#4f46e5" : "#1e293b") : "#f1f5f9";
+            const glow = isActive ? (isSynthetic ? "#818cf8" : "#94a3b8") : "#f8fafc";
 
-            // Dendrite Arbor (Inputs)
+            // Dendrites
             ctx.strokeStyle = color;
-            ctx.lineWidth = 1.2;
+            ctx.lineWidth = 1;
             for (let i = 0; i < 8; i++) {
                 const angle = (i * Math.PI * 2) / 8 + Math.sin(Date.now() * 0.001 + i) * 0.15;
                 ctx.beginPath();
@@ -529,45 +592,29 @@
                 const endY = Math.sin(angle) * 40;
                 ctx.quadraticCurveTo(cp1x, cp1y, endX, endY);
                 ctx.stroke();
-
-                // Secondary branching
-                ctx.beginPath();
-                ctx.moveTo(cp1x, cp1y);
-                ctx.lineTo(cp1x + Math.cos(angle + 0.6) * 12, cp1y + Math.sin(angle + 0.6) * 12);
-                ctx.stroke();
             }
 
-            // Soma (Body)
+            // Soma
             const somaGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, 15);
-            somaGrad.addColorStop(0, isActive ? color : "#18181b");
+            somaGrad.addColorStop(0, isActive ? color : "#fff");
             somaGrad.addColorStop(1, glow);
 
             ctx.fillStyle = somaGrad;
-            ctx.shadowBlur = isActive ? 40 : 0;
-            ctx.shadowColor = isSynthetic ? "#10b981" : "#fff";
-            ctx.beginPath();
-            ctx.arc(0, 0, 13, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.shadowBlur = isActive ? 30 : 0;
+            ctx.shadowColor = isSynthetic ? "rgba(79, 70, 229, 0.4)" : "rgba(30, 41, 59, 0.2)";
+            ctx.beginPath(); ctx.arc(0, 0, 13, 0, Math.PI * 2); ctx.fill();
 
             // Nucleus
-            ctx.fillStyle = "rgba(0,0,0,0.6)";
-            ctx.beginPath();
-            ctx.arc(0, 0, 4, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.fillStyle = "rgba(0,0,0,0.05)";
+            ctx.beginPath(); ctx.arc(0, 0, 4, 0, Math.PI * 2); ctx.fill();
 
-            // Mini-Antenna (Synthetic)
+            // Synthetic Gate Accessory
             if (isSynthetic) {
-                ctx.strokeStyle = isActive ? "#fff" : "#10b981";
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(0, -13);
-                ctx.lineTo(0, -35);
-                ctx.stroke();
-
-                ctx.fillStyle = isActive ? "#fff" : "#10b981";
-                ctx.beginPath();
-                ctx.arc(0, -35, 5, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.strokeStyle = isActive ? "#fff" : "#4f46e5";
+                ctx.lineWidth = 2.5;
+                ctx.beginPath(); ctx.moveTo(0, -13); ctx.lineTo(0, -32); ctx.stroke();
+                ctx.fillStyle = isActive ? "#fff" : "#4f46e5";
+                ctx.beginPath(); ctx.arc(0, -32, 5, 0, Math.PI * 2); ctx.fill();
             }
 
             ctx.restore();
@@ -576,17 +623,15 @@
         // --- Interaction Logic ---
         function pingGate() {
             state.neurons.forEach((n, idx) => {
-                if (n.isSynthetic) {
-                    triggerPulse(true, idx);
-                }
+                if (n.isSynthetic) triggerPulse(true, idx);
             });
             const status = document.getElementById('gate-status');
             status.innerText = "OVERRIDE ACTIVE";
-            status.className = "mono text-white animate-pulse";
+            status.className = "mono text-indigo-600 animate-pulse font-black";
             setTimeout(() => {
                 status.innerText = "STANDBY";
-                status.className = "mono text-emerald-500";
-            }, 2000);
+                status.className = "mono text-indigo-600 font-bold";
+            }, 2500);
         }
 
         function triggerPulse(isSynthetic = false, startIdx = 0) {
@@ -605,7 +650,6 @@
             canvas.width = container.clientWidth * dpr;
             canvas.height = container.clientHeight * dpr;
             ctx.scale(dpr, dpr);
-
             state.canvasWidth = container.clientWidth;
             state.canvasHeight = container.clientHeight;
 
@@ -614,36 +658,31 @@
             for (let i = 0; i < config.neuronCount; i++) {
                 state.neurons.push({
                     x: spacing * (i + 1),
-                    y: state.canvasHeight / 2 + (Math.random() - 0.5) * 100,
+                    y: state.canvasHeight / 2 + (Math.random() - 0.5) * 80,
                     isSynthetic: i % 2 !== 0,
                     pingScale: 0
                 });
             }
 
-            // Synaptic Clusters (Particles)
             state.particles = [];
             for (let i = 0; i < config.neuronCount - 1; i++) {
                 const n1 = state.neurons[i];
                 const n2 = state.neurons[i + 1];
                 const synX = n1.x + (n2.x - n1.x) * 0.94;
                 const synY = n1.y + (n2.y - n1.y) * 0.94;
-
                 for (let j = 0; j < config.particleDensity; j++) {
                     state.particles.push({
                         x: synX + (Math.random() - 0.5) * 40,
                         y: synY + (Math.random() - 0.5) * 40,
-                        originX: synX,
-                        originY: synY,
-                        vx: (Math.random() - 0.5) * 0.25,
-                        vy: (Math.random() - 0.5) * 0.25
+                        originX: synX, originY: synY,
+                        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25
                     });
                 }
             }
         }
 
         function drawLoop() {
-            ctx.fillStyle = "#050505";
-            ctx.fillRect(0, 0, state.canvasWidth, state.canvasHeight);
+            ctx.clearRect(0, 0, state.canvasWidth, state.canvasHeight);
 
             const now = Date.now();
             const timer = Math.max(0, (config.autoInterval - (now - state.lastAutoPulse)) / 1000).toFixed(1);
@@ -651,66 +690,47 @@
 
             if (now - state.lastAutoPulse > config.autoInterval) triggerPulse(false);
 
-            // Axon Paths
-            ctx.setLineDash([8, 4]);
-            ctx.strokeStyle = "rgba(255,255,255,0.015)";
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#eff6ff";
+            ctx.lineWidth = 1.5;
             ctx.beginPath();
             ctx.moveTo(state.neurons[0].x, state.neurons[0].y);
             state.neurons.forEach(n => ctx.lineTo(n.x, n.y));
             ctx.stroke();
-            ctx.setLineDash([]);
 
-            // Clustered Particles (NT Ligand)
             state.particles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
                 const dist = Math.sqrt((p.x - p.originX) ** 2 + (p.y - p.originY) ** 2);
-                if (dist > 25) {
-                    p.vx += (p.originX - p.x) * 0.002;
-                    p.vy += (p.originY - p.y) * 0.002;
-                }
-                ctx.fillStyle = "rgba(99, 102, 241, 0.5)";
+                if (dist > 20) { p.vx += (p.originX - p.x) * 0.002; p.vy += (p.originY - p.y) * 0.002; }
+                ctx.fillStyle = "rgba(79, 70, 229, 0.2)";
                 ctx.beginPath(); ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2); ctx.fill();
             });
 
-            // Pulse Propagation
             state.pulses.forEach((p, idx) => {
                 p.progress += config.pulseSpeed;
-                if (p.progress >= 1) {
-                    p.idx++;
-                    p.progress = 0;
-                }
-                if (p.idx >= state.neurons.length - 1) {
-                    state.pulses.splice(idx, 1);
-                    return;
-                }
+                if (p.progress >= 1) { p.idx++; p.progress = 0; }
+                if (p.idx >= state.neurons.length - 1) { state.pulses.splice(idx, 1); return; }
 
                 const n1 = state.neurons[p.idx];
                 const n2 = state.neurons[p.idx + 1];
                 const px = n1.x + (n2.x - n1.x) * p.progress;
                 const py = n1.y + (n2.y - n1.y) * p.progress;
 
-                ctx.shadowBlur = p.synthetic ? 30 : 0;
-                ctx.shadowColor = "#10b981";
-                ctx.strokeStyle = p.synthetic ? "#10b981" : "#fff";
-                ctx.lineWidth = 6;
-                ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI * 2); ctx.stroke();
+                ctx.shadowBlur = p.synthetic ? 20 : 0;
+                ctx.shadowColor = "rgba(79, 70, 229, 0.4)";
+                ctx.strokeStyle = p.synthetic ? "#4f46e5" : "#1e293b";
+                ctx.lineWidth = 5;
+                ctx.beginPath(); ctx.arc(px, py, 6, 0, Math.PI * 2); ctx.stroke();
                 ctx.shadowBlur = 0;
             });
 
-            // Anatomical Neurons
             state.neurons.forEach((n, idx) => {
                 const isActive = state.pulses.some(p => p.idx === idx && p.progress < 0.25);
-
-                // Acoustic Backscatter Reporting
-                if (n.isSynthetic) {
-                    if (Math.random() > 0.985) n.pingScale = 1;
-                    if (n.pingScale > 0) {
-                        ctx.strokeStyle = `rgba(255,255,255,${n.pingScale * 0.4})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath(); ctx.arc(n.x, n.y, 10 + (1 - n.pingScale) * 60, 0, Math.PI * 2); ctx.stroke();
-                        n.pingScale -= 0.012;
-                    }
+                if (n.isSynthetic && Math.random() > 0.99) n.pingScale = 1;
+                if (n.pingScale > 0) {
+                    ctx.strokeStyle = `rgba(79, 70, 229, ${n.pingScale * 0.3})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.arc(n.x, n.y, 10 + (1 - n.pingScale) * 80, 0, Math.PI * 2); ctx.stroke();
+                    n.pingScale -= 0.01;
                 }
                 drawAnatomicalNeuron(n.x, n.y, n.isSynthetic, isActive);
             });
@@ -726,19 +746,19 @@
                 data: {
                     labels: ['Non-Invasiveness', 'Resolution', 'Depth', 'Biocompatibility', 'Safety'],
                     datasets: [{
-                        label: 'BUSGI Ultrasound',
+                        label: 'Ultrasound',
                         data: [98, 92, 98, 85, 95],
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        borderColor: '#4f46e5',
                         borderWidth: 2,
-                        pointBackgroundColor: '#10b981'
+                        pointBackgroundColor: '#4f46e5'
                     }, {
                         label: 'Electrode Array',
                         data: [20, 96, 95, 40, 65],
-                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(30, 41, 59, 0.1)',
+                        borderColor: '#1e293b',
                         borderWidth: 2,
-                        pointBackgroundColor: '#6366f1'
+                        pointBackgroundColor: '#1e293b'
                     }]
                 },
                 options: {
@@ -746,9 +766,9 @@
                     maintainAspectRatio: false,
                     scales: {
                         r: {
-                            angleLines: { color: 'rgba(255,255,255,0.05)' },
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            pointLabels: { color: '#52525b', font: { family: 'Plus Jakarta Sans', size: 10, weight: '700' } },
+                            angleLines: { color: 'rgba(0,0,0,0.05)' },
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            pointLabels: { color: '#64748b', font: { family: 'Plus Jakarta Sans', size: 10, weight: '700' } },
                             ticks: { display: false }
                         }
                     },
